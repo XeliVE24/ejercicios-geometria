@@ -6,3 +6,10 @@ class rectangulo:
 
     def __str__(self):
         return f"rectangulo de largo {self.largo} ancho {self.ancho}"
+    
+        
+    def area(self):
+        return (self.largo * self.ancho)
+    def perimetro(self):
+        return 2*(self.largo + self.ancho)
+        
