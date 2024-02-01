@@ -27,7 +27,7 @@ print("area rec1:"+str(obj_rect.area()))"""
 """"""###
 
 
-obj_poly_1=poligono(5,18)
+"obj_poly_1=poligono(5,18)
 print(obj_poly_1)
 print(f"num Lados:{obj_poly_1.numLado}")
 print(obj_poly_1.nomPoly())
@@ -61,3 +61,40 @@ except Exception as e:
 #----------------------------------------
 print ("hellow")
 print ("este es otro commit")
+
+#-----------------------------------------------------------
+
+art1= articulo (1024578,"coca-cola","canada dry")
+art1.setPrecio(25.00)
+art1.setPeso(250)
+art1.setInv(10)
+art1.setDcto(40)
+cart1=carrito("abc456")
+print(cart1)
+
+
+cart=carrito("abc123")
+cart1=carrito("abc456")
+cart3=carrito("car3")
+
+
+art2= articulo (17846,"sabritas","sabor limon ")
+art2.setPrecio(20.00)
+art2.setPeso(250)
+art2.setInv(50)
+art2.setDcto(0)
+print (art2)
+
+
+
+art3= articulo (24458976,"La Rosa ","mazapan ")
+art3.setPrecio(5)
+art3.setPeso(10)
+art3.setInv(500)
+art3.setDcto(2)
+print (art3)
+cart3=carrito("car3")
+print(cart3)
+
+
+cart.addArticulos(art1.idArt)
