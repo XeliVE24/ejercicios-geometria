@@ -24,7 +24,7 @@ class Articulo():
         self.inventario = inventario
         pass
     def __str__(self):
-        return f"nombre: {self.Id} - Id: {self.marca} - marca: {self.nombre} - Precio: {self.precio} - Peso: {self.peso} - descuento: {self.descuento} - inventario: {self.inventario}"
+        return f"nombre: {self.Id} | Id: {self.marca} | marca: {self.nombre} | Precio: {self.precio} | Peso: {self.peso} | descuento: {self.descuento} | inventario: {self.inventario}"
         
     def setPrecio(self,precio):
         self.precio = precio
@@ -39,59 +39,58 @@ class Articulo():
     def setInventario(self,inventario):
         self.inventario = inventario
         return 0
-     
+    def getDescuento(self):
+        if self.descuento != None:
+            precioDescuento = (self.precio * (self.descuento/100))
+        else:
+            precioDescuento = 0
+        return precioDescuento    
+        
     def getPreciodto(self):
         if self.descuento != None:
             precioDescuento = self.precio - (self.precio * (self.descuento/100))
         else:
             precioDescuento = self.precio    
         return precioDescuento    
-    
-    def getDCTI(self):
-        if self.descuento != None:
-            precioDescuento = self.precio - (self.precio * (self.descuento/100))
-        else:
-            precioDescuento = self.precio    
-        return precioDescuento    
-    
-
+        
     
         
 # FIN ARTICULO        
 class Cart():
     def __init__(self,IdCart):
         self.IdCart = IdCart
-        self.articulos =[ ]
         self.objArticulos =[ ]
         pass
-
+        
     def __str__(self):
-        printCart = f"Carrito número: {self.IdCart} \n"
-        if len(self.articulos) >= 1:
-            for i in range (0, len(self.articulos),1):
-                printCart += f"Articulo: {self.articulos[i]}\n"
+        printCart = f"Ticket# : {self.IdCart} \n"
         if len(self.objArticulos) >= 1:
             for i in range (0, len(self.objArticulos),1):
-                printCart += f"Articulo: {self.objArticulos[i]}\n"
+                printCart += f"{self.objArticulos[i].Id} {self.objArticulos[i].nombre} $ {self.objArticulos[i].precio} mxn\n -${self.objArticulos[i].getDescuento()}mxn\n"
         else: 
                 printCart += f"Carrito vacio"    
         return printCart    
-    def addarticulo(self,IdArt):
-        self.articulos.append(IdArt)
     def addarticulo(self,objArt):
         if type (objArt.inventario) != type(None):
             if objArt.inventario >= 1:
                 objArt.inventario -= 1
                 self.objArticulos.append(objArt)
             else:
-                print(f"No hay inventario de : {objArt.nombre}")
+                print(f"No hay inventario de :( {objArt.nombre}")
         else:
             print("Inventario no definido")
         return 0 
-
-    def getTotal1(self):
+    
+    def getTotal(self):
         total = 0
         for i in range (0, len(self.objArticulos),1):
             total += self.objArticulos[1].getPreciodto()
         return total
-    pass
+       
+    def getTotalDesc(self):
+        total = 0
+        for i in range (0, len(self.objArticulos),1):
+            total += self.objArticulos[1].getDescuento()
+        return total
+        
+        
