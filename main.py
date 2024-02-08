@@ -103,7 +103,7 @@ cart2.addarticulo(art2)
 print(cart1)
 print("---------------------------------")
 print(cart1.objArticulos[0])
-print(cart1.objArticulos[0].nombre)#en aso de solo querer un dato en específico se agrega "." y lo que quieres q imprima
+print(cart1.objArticulos[0].nombre)
 print(cart1.objArticulos[1].nombre)
 print(art1.inventario)
 print(art2.inventario)
