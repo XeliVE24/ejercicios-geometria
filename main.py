@@ -27,10 +27,10 @@ print("area rec1:"+str(obj_rect.area()))"""
 """"""###
 
 
-"obj_poly_1=poligono(5,18)
-print(obj_poly_1)
-print(f"num Lados:{obj_poly_1.numLado}")
-print(obj_poly_1.nomPoly())
+#obj_poly_1=poligono(5,18)
+#print(obj_poly_1)
+#print(f"num Lados:{obj_poly_1.numLado}")
+#print(obj_poly_1.nomPoly())
 
 
 
@@ -64,37 +64,52 @@ print ("este es otro commit")
 
 #-----------------------------------------------------------
 
-art1= articulo (1024578,"coca-cola","canada dry")
+art1 = Articulo(10256,"Coca-Cola","Canada Dry")
+art1.setDescuento(10)
+art1.setPeso(10)
+art1.setInventario(10)
 art1.setPrecio(25.00)
-art1.setPeso(250)
-art1.setInv(10)
-art1.setDcto(40)
-cart1=carrito("abc456")
+print(art1)
+cart1 = Cart("ABC123")
+#print(cart1)
+cart2 = Cart("DEF456")
+#print(cart2)
+cart3 = Cart("GHI789")
+
+art2 = Articulo(10165,"Sabritas","sabor limon  500gr")
+art1.setDescuento(25)
+art1.setPeso(500)
+art1.setInventario(5)
+art1.setPrecio(22.00)
+art2.setDescuento(25)
+art2.setPeso(500)
+art2.setInventario(5)
+art2.setPrecio(22.00)
+#print(art2)
+
+art3 = Articulo(11608,"La Rosa ","mazapan ")
+art1.setPeso(150)
+art1.setInventario(5)
+art1.setPrecio(22.00)
+art3.setPeso(150)
+#art3.setInventario(5)
+art3.setPrecio(22.00)
+#print(art3)
+
+cart1.addarticulo(art1.Id)
+cart1.addarticulo(art2.Id)
+cart1.addarticulo(art3.Id)
+cart1.addarticulo(art1)
+cart1.addarticulo(art2)
+cart1.addarticulo(art3)
 print(cart1)
-
-
-cart=carrito("abc123")
-cart1=carrito("abc456")
-cart3=carrito("car3")
-
-
-art2= articulo (17846,"sabritas","sabor limon ")
-art2.setPrecio(20.00)
-art2.setPeso(250)
-art2.setInv(50)
-art2.setDcto(0)
-print (art2)
-
-
-
-art3= articulo (24458976,"La Rosa ","mazapan ")
-art3.setPrecio(5)
-art3.setPeso(10)
-art3.setInv(500)
-art3.setDcto(2)
-print (art3)
-cart3=carrito("car3")
-print(cart3)
-
-
-cart.addArticulos(art1.idArt)
+print(cart2)
+print("---------------------------------")
+print(cart1.objArticulos[0])
+print(cart1.objArticulos[0].nombre)
+print(cart1.objArticulos[1].nombre)
+print(art1.inventario)
+print(art2.inventario)
+print(art3.inventario)
+print("--------------------------------------")
+print(f"Carrito: {cart1.IdCart}\nTotal: { cart1.getTotal1()}")

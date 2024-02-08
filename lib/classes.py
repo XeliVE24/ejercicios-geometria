@@ -1,5 +1,5 @@
 #class rectangulo:
- "   def __init__(self, largo ,ancho):
+# "   def __init__(self, largo ,ancho):
   #    self.largo = largo
  #      return 2*(self.largo + self.ancho)
 # self.ancho = ancho
@@ -12,63 +12,86 @@
    # def area(self):
    #     return (self.largo * self.ancho)
   #  def perimetro(self):
-   class articulo:
-    def __init__(self,idArt,marca,nombre,precio=None,peso=None,descuento=None,inv=None):
-        self.idArt= idArt
-        self.marca=marca
-        self.nombre=nombre
-        self.peso=peso
-        self.descuento=descuento
-        self.precio=precio
-        self.inv=inv
-
+# INICIO ARTICULO        
+class Articulo():
+    def __init__(self,marca,nombre,Id,precio=None,peso=None,descuento=None,inventario=None):
+        self.marca = marca
+        self.nombre = nombre
+        self.precio = precio
+        self.peso = peso
+        self.descuento = descuento
+        self.Id = Id
+        self.inventario = inventario
         pass
     def __str__(self):
-         return f"idArt:{self.idArt}- marca : {self.marca}-precio{self.precio}-peso{self.peso}-descuento{self.descuento}-inv{self.inv}-precioDcto{self.preciocto}"
-    
+        return f"nombre: {self.Id} - Id: {self.marca} - marca: {self.nombre} - Precio: {self.precio} - Peso: {self.peso} - descuento: {self.descuento} - inventario: {self.inventario}"
+        
     def setPrecio(self,precio):
-        self.precio=precio
+        self.precio = precio
         return 0
-        
+    
     def setPeso(self,peso):
-        self.peso=peso
+        self.peso  = peso
         return 0
-    
-    def setInv(self,inv):
-        self.inv=inv
+    def setDescuento(self,descuento):
+        self.descuento = descuento
         return 0
-    
-        
-    def setDcto(self,descuento):
-        self.descuento=descuento
+    def setInventario(self,inventario):
+        self.inventario = inventario
         return 0
-    
+     
     def getPreciodto(self):
         if self.descuento != None:
-            precioDcto=self.precio-(self.precio*(self.descuento/100))
+            precioDescuento = self.precio - (self.precio * (self.descuento/100))
         else:
-            precioDcto=self.precio
-        return precioDcto
+            precioDescuento = self.precio    
+        return precioDescuento    
     
-    
-  
-class carrito ():
-    def __init__(self,idCart):
-        self.idCart=idCart
-        self.articulos= []
-        pass
-    
-    def __str__(self):
-        printCarrito=f"carrito:{self.idCart}"
-        if len(self.articulos)>=1:
-            for i in range (0,len(self.articulos),1):
-             printCarrito += f"Articulo:{self.articulos[i]}\n"
-        else :
-                printcarrito+=f"carrito vacio"
-                return printCarrito
+    def getDCTI(self):
+        if self.descuento != None:
+            precioDescuento = self.precio - (self.precio * (self.descuento/100))
+        else:
+            precioDescuento = self.precio    
+        return precioDescuento    
     
 
-    def addArticulos(self,idArt):
-        self.articulos.append(idArt)
+    
+        
+# FIN ARTICULO        
+class Cart():
+    def __init__(self,IdCart):
+        self.IdCart = IdCart
+        self.articulos =[ ]
+        self.objArticulos =[ ]
+        pass
+
+    def __str__(self):
+        printCart = f"Carrito número: {self.IdCart} \n"
+        if len(self.articulos) >= 1:
+            for i in range (0, len(self.articulos),1):
+                printCart += f"Articulo: {self.articulos[i]}\n"
+        if len(self.objArticulos) >= 1:
+            for i in range (0, len(self.objArticulos),1):
+                printCart += f"Articulo: {self.objArticulos[i]}\n"
+        else: 
+                printCart += f"Carrito vacio"    
+        return printCart    
+    def addarticulo(self,IdArt):
+        self.articulos.append(IdArt)
+    def addarticulo(self,objArt):
+        if type (objArt.inventario) != type(None):
+            if objArt.inventario >= 1:
+                objArt.inventario -= 1
+                self.objArticulos.append(objArt)
+            else:
+                print(f"No hay inventario de : {objArt.nombre}")
+        else:
+            print("Inventario no definido")
         return 0 
-    pass     
+
+    def getTotal1(self):
+        total = 0
+        for i in range (0, len(self.objArticulos),1):
+            total += self.objArticulos[1].getPreciodto()
+        return total
+    pass
